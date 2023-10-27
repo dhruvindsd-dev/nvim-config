@@ -42,7 +42,7 @@ M.ui = {
   tabufline = {
     show_numbers = false,
     enabled = true,
-    lazyload = true,
+    lazyload = false,
     overriden_modules = nil,
   },
 
