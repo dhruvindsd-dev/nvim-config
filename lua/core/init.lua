@@ -3,7 +3,7 @@ local g = vim.g
 local config = require("core.utils").load_config()
 
 -------------------------------------- globals -----------------------------------------
-g.nvchad_theme = "nightowl"
+g.nvchad_theme = "jellybeans"
 g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
 g.toggle_theme_icon = "   "
 g.transparency = config.ui.transparency
@@ -89,7 +89,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 
     config = require("core.utils").load_config()
 
-    vim.g.nvchad_theme = "nightowl"
+    vim.g.nvchad_theme = "jellybeans"
     vim.g.transparency = config.ui.transparency
 
     -- statusline
