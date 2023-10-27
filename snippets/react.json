@@ -1,0 +1,47 @@
+{
+  "Import Styles": {
+    "prefix": "imps",
+    "body": "import styles from './index.module.scss'"
+  },
+  "Typescript React Function Component": {
+    "prefix": "rtc",
+    "body": [
+      "import React from 'react'",
+      "",
+      "interface ${TM_FILENAME_BASE}Props {",
+      "$1",
+      "}",
+      "",
+      "const $TM_FILENAME_BASE = ({$2}: ${TM_FILENAME_BASE}Props) => {",
+      "\t\treturn ($3);",
+      "}",
+      "export default ${TM_FILENAME_BASE}"
+    ],
+    "description": "Typescript React Function Component"
+  },
+
+  "Breakpoints for Mantine Ui @createStyles": {
+    "prefix": "mbr",
+    "body": [
+      "[`@media (max-width: ${theme.breakpoints.sm$1}px)`]: {",
+      "$2",
+      "}, "
+    ],
+    "description": "Typescript React Function Component"
+  },
+  "createStyles": {
+    "prefix": "createStyles",
+    "body": [
+      "import { createStyles } from '@mantine/core';",
+      "export const useStyles = createStyles((theme) => ({",
+      "$1",
+      "}));"
+    ],
+    "description": "createStyles"
+  },
+  "cl": {
+    "prefix": "cl",
+    "body": ["console.log($1)"],
+    "description": "console.log()"
+  }
+}
