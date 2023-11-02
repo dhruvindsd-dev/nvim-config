@@ -18,17 +18,24 @@ M.general = {
           arguments = { vim.api.nvim_buf_get_name(0) },
           title = "",
         }
-        vim.lsp.buf.format { async = false }
         vim.lsp.buf.execute_command(params)
+        vim.lsp.buf.format { async = false }
+
+        if vim.bo.filetype == "prisma" then
+          vim.cmd ":e!"
+        end
       end,
       "LSP formatting",
     },
     ["<leader>we"] = { "<C-w>=", "resize splits " },
     -- maximise vertical and horizontal splits
     ["<leader>wm"] = { "<C-w>|<C-w>_", "maximise vertical and horizontal splits" },
+
     -- lse all buffers
     ["<leader>X"] = { ":bufdo bd<CR>", "Close all buffers" },
     ["<leader>bc"] = { ":BufOnly<cr>", "Close all buffers", opts = { noremap = true, silent = true } },
+    ["r"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
+
     -- using Q,W,E,R for global marks. Mapping then manually so I don't have to press shift again and agian
     ["mq"] = { "mQ", "set global mark Q" },
     ["mw"] = { "mW", "set global mark W" },
@@ -92,6 +99,8 @@ M.general = {
     ["<leader>wl"] = { "<C-w>v", "Vertical Split" },
     ["<leader>wj"] = { "<C-w>s", "Horizontal Split" },
     ["<leader>wc"] = { "<C-w>o", "Close all splits" },
+
+    ["gi"] = { "gi<Esc>zzi" },
   },
   v = {
     ["<leader>sy"] = { '"+y', "Copy to system clipboard", { opts = { silent = true } } },
