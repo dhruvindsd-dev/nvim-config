@@ -42,9 +42,9 @@ local options = {
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = "<CR>",
-      scope_incremental = "<CR>",
-      node_incremental = "<TAB>",
+      init_selection = "<C-v>",
+      scope_incremental = "<TAB>",
+      node_incremental = false,
       node_decremental = "<S-TAB>",
     },
   },
