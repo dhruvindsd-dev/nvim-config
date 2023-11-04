@@ -18,8 +18,8 @@ M.general = {
           arguments = { vim.api.nvim_buf_get_name(0) },
           title = "",
         }
-        vim.lsp.buf.execute_command(params)
         vim.lsp.buf.format { async = false }
+        vim.lsp.buf.execute_command(params)
 
         if vim.bo.filetype == "prisma" then
           vim.cmd ":e!"
@@ -34,7 +34,7 @@ M.general = {
     -- lse all buffers
     ["<leader>X"] = { ":bufdo bd<CR>", "Close all buffers" },
     ["<leader>bc"] = { ":BufOnly<cr>", "Close all buffers", opts = { noremap = true, silent = true } },
-    ["r"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
+    ["<leader>bf"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
 
     -- using Q,W,E,R for global marks. Mapping then manually so I don't have to press shift again and agian
     ["mq"] = { "mQ", "set global mark Q" },

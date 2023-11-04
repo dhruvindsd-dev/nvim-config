@@ -126,6 +126,14 @@ local plugins = {
     end,
   },
   { "numtostr/BufOnly.nvim", lazy = false },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    lazy = false,
+
+    config = function()
+      require "custom.configs.treesitter-objects"
+    end,
+  },
 }
 
 return plugins
