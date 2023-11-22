@@ -99,7 +99,6 @@ M.general = {
     ["<leader>wl"] = { "<C-w>v", "Vertical Split" },
     ["<leader>wj"] = { "<C-w>s", "Horizontal Split" },
     ["<leader>wc"] = { "<C-w>o", "Close all splits" },
-
     ["gi"] = { "gi<Esc>zzi" },
   },
   v = {
