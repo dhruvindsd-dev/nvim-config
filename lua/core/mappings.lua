@@ -185,7 +185,7 @@ M.lspconfig = {
       "LSP code action",
     },
 
-    ["gr"] = { ":<C-U>Telescope lsp_references<cr>", "Window left", opts = { silent = true } },
+    ["gr"] = { ":<C-U>Telescope lsp_references <cr>", "Window left", opts = { silent = true } },
     ["gR"] = {
       function()
         vim.lsp.buf.references()
@@ -257,12 +257,12 @@ M.telescope = {
 
   n = {
     ["\\"] = { "@q", "Play first recording" },
-    ["r"] = { "<cmd> Telescope find_files <CR>", "Find files" },
-    ["R"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "Find in current buffer" },
+    ["r"] = { "<cmd> Telescope find_files theme=ivy<CR>", "Find files" },
+    ["R"] = { "<cmd> Telescope current_buffer_fuzzy_find theme=ivy <CR>", "Find in current buffer" },
     ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
     ["<leader>ff"] = { "<cmd> Telescope grep_string<CR>", "Grep String" },
     ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
-    ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
+    ["<leader>fb"] = { "<cmd> Telescope buffers theme=ivy <CR>", "Find buffers" },
     ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "Help page" },
     ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
 

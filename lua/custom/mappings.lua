@@ -50,7 +50,7 @@ M.general = {
     -- list marks
     ["mv"] = { ":<C-U>Telescope marks<cr>", "list marks", { opts = { silent = true } } },
 
-    ["t"] = { ":<C-U>Telescope lsp_document_symbols<cr>", "document symbols", { opts = { silent = true } } },
+    ["t"] = { ":<C-U>Telescope lsp_document_symbols theme=ivy<cr>", "document symbols", { opts = { silent = true } } },
     ["T"] = {
       function()
         local otps = {

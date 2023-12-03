@@ -27,7 +27,7 @@ local options = {
         mirror = false,
       },
       width = 0.87,
-      height = 0.80,
+      height = 0.95,
       preview_cutoff = 120,
     },
     file_sorter = require("telescope.sorters").get_fuzzy_file,
@@ -45,9 +45,14 @@ local options = {
     -- Developer configurations: Not meant for general override
     buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
     mappings = {
+      i = {
+        ["<C-p>"] = require("telescope.actions.layout").toggle_preview,
+      },
       n = {
+        ["<C-p>"] = require("telescope.actions.layout").toggle_preview,
         ["q"] = require("telescope.actions").close,
         ["L"] = require("telescope.actions").file_vsplit,
+        ["J"] = require("telescope.actions").file_split,
       },
     },
   },

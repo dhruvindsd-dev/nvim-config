@@ -8,11 +8,11 @@
     "body": [
       "import React from 'react'",
       "",
-      "interface ${TM_FILENAME_BASE}Props {",
+      "interface Props {",
       "$1",
       "}",
       "",
-      "const $TM_FILENAME_BASE = ({$2}: ${TM_FILENAME_BASE}Props) => {",
+      "const $TM_FILENAME_BASE = ({$2}: Props) => {",
       "\t\treturn ($3);",
       "}",
       "export default ${TM_FILENAME_BASE}"
