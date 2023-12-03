@@ -45,11 +45,9 @@ local options = {
     -- Developer configurations: Not meant for general override
     buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
     mappings = {
-      i = {
-        ["<C-p>"] = require("telescope.actions.layout").toggle_preview,
-      },
+      i = {},
       n = {
-        ["<C-p>"] = require("telescope.actions.layout").toggle_preview,
+        ["f"] = require("telescope.actions.layout").toggle_preview,
         ["q"] = require("telescope.actions").close,
         ["L"] = require("telescope.actions").file_vsplit,
         ["J"] = require("telescope.actions").file_split,
