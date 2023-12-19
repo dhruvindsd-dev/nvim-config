@@ -71,8 +71,8 @@ M.general = {
     },
     ["<leader>sp"] = { '"+p', "Paste from system clipboard", opts = { silent = true } },
     -- harpoon
-    ["<leader>ha"] = { ":<C-U> lua require('harpoon.mark').add_file()<cr>ma", "Add File", opts = { silent = true } },
-    ["<leader>hf"] = {
+    ["<leader>a"] = { ":<C-U> lua require('harpoon.mark').add_file()<cr>ma", "Add File", opts = { silent = true } },
+    ["H"] = {
       ":<C-U> lua require('harpoon.ui').toggle_quick_menu()<cr>",
       "Files View",
       opts = { silent = true },

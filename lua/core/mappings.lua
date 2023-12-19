@@ -265,6 +265,23 @@ M.telescope = {
     ["<leader>fb"] = { "<cmd> Telescope buffers theme=ivy <CR>", "Find buffers" },
     ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "Help page" },
     ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
+    ["<leader>fg"] = {
+      function()
+        local changed_files =
+          vim.fn.systemlist "{ git status --short; git diff --name-only --cached; } | awk '{print $NF}' | sort | uniq"
+        -- Filter out empty lines or potential error messages
+        local valid_files = {}
+        for _, file in ipairs(changed_files) do
+          table.insert(valid_files, file)
+        end
+
+        -- Use Telescope to live grep through the changed files
+        require("telescope.builtin").live_grep {
+          search_dirs = valid_files,
+        }
+      end,
+      "Grep changed git files",
+    },
 
     -- git
     ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },

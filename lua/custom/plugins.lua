@@ -134,6 +134,7 @@ local plugins = {
       require "custom.configs.treesitter-objects"
     end,
   },
+  { "xiyaowong/transparent.nvim", lazy = false },
 }
 
 return plugins
