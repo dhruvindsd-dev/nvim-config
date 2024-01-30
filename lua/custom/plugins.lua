@@ -135,6 +135,12 @@ local plugins = {
     end,
   },
   { "xiyaowong/transparent.nvim", lazy = false },
+  {
+    "craftzdog/solarized-osaka.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
 }
 
 return plugins

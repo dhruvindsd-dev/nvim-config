@@ -46,7 +46,7 @@ end
 
 vim.cmd [[
    augroup ilikecursorline
-      autocmd VimEnter * :highlight CursorLine guibg=#2A2420
+      autocmd VimEnter * :highlight CursorLine guibg=#1B1B28
    augroup END
 
 ]]

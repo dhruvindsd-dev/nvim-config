@@ -13,6 +13,18 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+lspconfig.cssmodules_ls.setup {
+  on_attach = function(client)
+    --  disabling `go to definition` for cssmodules_ls, since it interferes with typescript's go to definition
+    client.server_capabilities.definitionProvider = false
+    on_attach(client)
+  end,
+
+  -- optionally
+  init_options = {
+    camelCase = false,
+  },
+}
 
 lspconfig.pyright.setup {
   on_attach = on_attach,

@@ -7,7 +7,6 @@ M.general = {
     ["J"] = { "5j", "Down", opts = { nowait = true } },
     ["K"] = { "5k", "Up", opts = { nowait = true } },
     ["<leader>q"] = { ":<C-U>q<cr>", "quit", opts = { nowait = true } },
-    -- ["s"] = { ":<C-U>HopWordMW<cr>", "Hop anywhere multi window", opts = { silent = true } },
     ["<leader>tn"] = { ":<C-U>tabnew<cr>", "new tab", opts = { silent = true } },
     ["<leader>tc"] = { " X:<C-U>tabclose<cr>", "close tab", opts = { silent = true } },
 
