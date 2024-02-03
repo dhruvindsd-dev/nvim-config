@@ -1,7 +1,7 @@
 {
   "Import Styles": {
     "prefix": "imps",
-    "body": "import classes from './index.module.scss'"
+    "body": "import classes from './styles.module.scss'"
   },
   "Typescript React Function Component": {
     "prefix": "rtc",
