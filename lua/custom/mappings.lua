@@ -49,7 +49,11 @@ M.general = {
     -- list marks
     ["mv"] = { ":<C-U>Telescope marks<cr>", "list marks", { opts = { silent = true } } },
 
-    ["t"] = { ":<C-U>Telescope lsp_document_symbols theme=cursor preview=false<cr>", "document symbols", { opts = { silent = true } } },
+    ["t"] = {
+      ":<C-U>Telescope lsp_document_symbols theme=cursor preview=false<cr>",
+      "document symbols",
+      { opts = { silent = true } },
+    },
     ["T"] = {
       function()
         local otps = {
@@ -102,6 +106,7 @@ M.general = {
 
     -- vim visual multi
     ["<leader>mc"] = { "<Plug>(VM-Find-Under)" },
+    ["<leader>F"] = { "<cmd>lua require('spectre').toggle()<CR>", opts = { silent = true } },
   },
   v = {
     ["<leader>sy"] = { '"+y', "Copy to system clipboard", { opts = { silent = true } } },
