@@ -23,21 +23,10 @@ local plugins = {
   },
 
   -- override plugin configs
-  {
-    "williamboman/mason.nvim",
-    opts = overrides.mason,
-  },
-
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = overrides.treesitter,
-  },
-  {
-    "nvim-tree/nvim-tree.lua",
-    opts = overrides.nvimtree,
-  },
-
-  -- Install a plugin
+  { "williamboman/mason.nvim", opts = overrides.mason },
+  { "nvim-treesitter/nvim-treesitter", opts = overrides.treesitter },
+  { "nvim-tree/nvim-tree.lua", opts = overrides.nvimtree },
+  --
   {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
@@ -56,24 +45,8 @@ local plugins = {
   -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
   -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
   --
-  {
-    "christoomey/vim-tmux-navigator",
-    lazy = false,
-  },
-  {
-    "github/copilot.vim",
-    lazy = false,
-  },
-  -- {
-  --   "phaazon/hop.nvim",
-  --   lazy = false,
-  --   config = function()
-  --     require("hop").setup()
-  --     vim.cmd "highlight HopNextKey guifg=#29E68E"
-  --     vim.cmd "highlight HopNextKey1 guifg=#29E68E"
-  --     vim.cmd "highlight HopNextKey2 guifg=#29E68E"
-  --   end,
-  -- },
+  { "christoomey/vim-tmux-navigator", lazy = false },
+  { "github/copilot.vim", lazy = false },
   {
     "mfussenegger/nvim-dap",
     lazy = false,
@@ -90,10 +63,7 @@ local plugins = {
       require "custom.configs.dapui"
     end,
   },
-  {
-    "ThePrimeagen/harpoon",
-    lazy = false,
-  },
+  { "ThePrimeagen/harpoon", lazy = false },
   { "yssl/QFEnter", lazy = false },
   { "kevinhwang91/promise-async", lazy = false },
   {
@@ -103,15 +73,12 @@ local plugins = {
     end,
     event = "BufRead",
   },
-  {
-    "mbbill/undotree",
-    lazy = false,
-  },
+  { "mbbill/undotree", lazy = false },
   {
     "stevearc/oil.nvim",
     lazy = false,
     config = function()
-      require "custom.configs.mini"
+      require "custom.configs.oil"
     end,
   },
   {
@@ -126,21 +93,16 @@ local plugins = {
     end,
   },
   { "numtostr/BufOnly.nvim", lazy = false },
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    lazy = false,
-
-    config = function()
-      require "custom.configs.treesitter-objects"
-    end,
-  },
+  { "nvim-treesitter/nvim-treesitter-textobjects", lazy = false },
   { "xiyaowong/transparent.nvim", lazy = false },
   {
-    "craftzdog/solarized-osaka.nvim",
+    "mg979/vim-visual-multi",
     lazy = false,
-    priority = 1000,
-    opts = {},
+    config = function()
+      vim.cmd "VMTheme purplegray"
+    end,
   },
+  { "nvim-pack/nvim-spectre", lazy = false },
 }
 
 return plugins

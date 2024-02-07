@@ -256,7 +256,7 @@ M.telescope = {
   plugin = true,
 
   n = {
-    ["\\"] = { "@q", "Play first recording" },
+    ["<leader>."] = { "@q", "Play first recording" },
     ["r"] = { "<cmd> Telescope find_files theme=ivy<CR>", "Find files" },
     ["R"] = { "<cmd> Telescope current_buffer_fuzzy_find theme=ivy <CR>", "Find in current buffer" },
     ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },

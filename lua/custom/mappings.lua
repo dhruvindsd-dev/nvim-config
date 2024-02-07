@@ -49,7 +49,7 @@ M.general = {
     -- list marks
     ["mv"] = { ":<C-U>Telescope marks<cr>", "list marks", { opts = { silent = true } } },
 
-    ["t"] = { ":<C-U>Telescope lsp_document_symbols theme=ivy<cr>", "document symbols", { opts = { silent = true } } },
+    ["t"] = { ":<C-U>Telescope lsp_document_symbols theme=cursor preview=false<cr>", "document symbols", { opts = { silent = true } } },
     ["T"] = {
       function()
         local otps = {
@@ -99,6 +99,9 @@ M.general = {
     ["<leader>wj"] = { "<C-w>s", "Horizontal Split" },
     ["<leader>wc"] = { "<C-w>o", "Close all splits" },
     ["gi"] = { "gi<Esc>zzi" },
+
+    -- vim visual multi
+    ["<leader>mc"] = { "<Plug>(VM-Find-Under)" },
   },
   v = {
     ["<leader>sy"] = { '"+y', "Copy to system clipboard", { opts = { silent = true } } },
