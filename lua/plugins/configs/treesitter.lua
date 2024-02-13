@@ -43,8 +43,8 @@ local options = {
     enable = true,
     keymaps = {
       init_selection = "<C-v>",
-      scope_incremental = "<TAB>",
-      node_incremental = false,
+      scope_incremental = false,
+      node_incremental = "<TAB>",
       node_decremental = "<S-TAB>",
     },
   },

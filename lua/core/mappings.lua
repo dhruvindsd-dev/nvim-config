@@ -28,7 +28,7 @@ M.general = {
   },
 
   n = {
-    ["<Esc>"] = { ":noh <CR>", "Clear highlights" },
+    ["<Esc>"] = { ":noh <CR>", "Clear highlights", opts = { silent = true } },
     -- switch between windows
     ["<C-h>"] = { ":<C-U>TmuxNavigateLeft<cr>", "Window left", opts = { silent = true } },
     ["<C-l>"] = { ":<C-U>TmuxNavigateRight<cr>", "Window right", opts = { silent = true } },
@@ -36,8 +36,8 @@ M.general = {
     ["<C-k>"] = { ":<C-U>TmuxNavigateUp<cr>", "Window up", opts = { silent = true } },
 
     -- save
-    ["<leader>s"] = { ":<C-U>w<CR>", "Save file" },
-    ["<leader>S"] = { ":<C-U>wa<CR>", "Save all file's" },
+    ["<leader>s"] = { ":<C-U>w<CR>", "Save file", opts = { silent = true } },
+    ["<leader>S"] = { ":<C-U>wa<CR>", "Save all file's", opts = { silent = true } },
 
     -- line numbers
     ["<leader>rn"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },

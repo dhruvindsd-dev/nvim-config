@@ -31,9 +31,14 @@ M.general = {
     ["<leader>wm"] = { "<C-w>|<C-w>_", "maximise vertical and horizontal splits" },
 
     -- lse all buffers
-    ["<leader>X"] = { ":bufdo bd<CR>", "Close all buffers" },
+    ["<leader>X"] = { ":bufdo bd<CR>", "Close all buffers", opts = { silent = true } },
     ["<leader>bc"] = { ":BufOnly<cr>", "Close all buffers", opts = { noremap = true, silent = true } },
     ["<leader>bf"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
+    ["<leader>bs"] = {
+      "<cmd> tab split<CR>",
+      "Open current buffer in new tab",
+      opts = { noremap = true, silent = true },
+    },
 
     -- using Q,W,E,R for global marks. Mapping then manually so I don't have to press shift again and agian
     ["mq"] = { "mQ", "set global mark Q" },
@@ -107,10 +112,14 @@ M.general = {
     -- vim visual multi
     ["<leader>mc"] = { "<Plug>(VM-Find-Under)" },
     ["<leader>F"] = { "<cmd>lua require('spectre').toggle()<CR>", opts = { silent = true } },
+    ["zo"] = { "zO" },
+
+    ["<leader>wt"] = { ":<C-U>set wrap!<cr>", "Toggle word wrap", opts = { silent = true } },
   },
   v = {
     ["<leader>sy"] = { '"+y', "Copy to system clipboard", { opts = { silent = true } } },
     ["<leader>sp"] = { '"+p', "Paste from system clipboard", opts = { silent = true } },
+    ["<leader>mc"] = { "<Plug>(VM-Visual-Cursors)" },
   },
   i = {
     ["jr"] = { "<C-r>", "select register" },
