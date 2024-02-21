@@ -55,7 +55,7 @@ M.general = {
     ["mv"] = { ":<C-U>Telescope marks<cr>", "list marks", { opts = { silent = true } } },
 
     ["t"] = {
-      ":<C-U>Telescope lsp_document_symbols theme=cursor preview=false<cr>",
+      ":<C-U>Telescope lsp_document_symbols theme=cursor previewer=false<cr>",
       "document symbols",
       { opts = { silent = true } },
     },
@@ -109,11 +109,12 @@ M.general = {
     ["<leader>wc"] = { "<C-w>o", "Close all splits" },
     ["gi"] = { "gi<Esc>zzi" },
 
-    -- vim visual multi
     ["<leader>mc"] = { "<Plug>(VM-Find-Under)" },
+    ["<M-C-j>"] = { "<Plug>(VM-Select-Cursor-Down)" },
+    ["<M-C-k>"] = { "<Plug>(VM-Select-Cursor-Up)" },
+
     ["<leader>F"] = { "<cmd>lua require('spectre').toggle()<CR>", opts = { silent = true } },
     ["zo"] = { "zO" },
-
     ["<leader>wt"] = { ":<C-U>set wrap!<cr>", "Toggle word wrap", opts = { silent = true } },
   },
   v = {

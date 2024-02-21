@@ -1,4 +1,5 @@
 local options = {
+
   filters = {
     dotfiles = false,
     exclude = { vim.fn.stdpath "config" .. "/lua/custom" .. ".DS_Store" },
@@ -72,6 +73,20 @@ local options = {
       },
     },
   },
+
+  on_attach = function(bufnr)
+    local api = require "nvim-tree.api"
+
+    local function opts(desc)
+      return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+    end
+
+    api.config.mappings.default_on_attach(bufnr)
+
+    vim.keymap.set("n", "J", api.node.open.horizontal, opts "Up")
+    vim.keymap.set("n", "L", api.node.open.vertical, opts "Up")
+    vim.keymap.set("n", "?", api.tree.toggle_help, opts "Help")
+  end,
 }
 
 return options
