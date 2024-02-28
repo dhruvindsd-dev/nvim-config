@@ -129,6 +129,17 @@ M.general = {
   i = {
     ["jr"] = { "<C-r>", "select register" },
   },
+  t = {
+    ["<C-h>"] = { "<C-\\><C-N>:<C-U>TmuxNavigateLeft<cr>", "Window left", opts = { silent = true } },
+    ["<C-l>"] = { "<C-\\><C-N>:<C-U>TmuxNavigateRight<cr>", "Window right", opts = { silent = true } },
+    ["<C-j>"] = { "<C-\\><C-N>:<C-U>TmuxNavigateDown<cr>", "Window down", opts = { silent = true } },
+    ["<C-k>"] = { "<C-\\><C-N>:<C-U>TmuxNavigateUp<cr>", "Window up", opts = { silent = true } },
+    ["<leader>wl"] = { "<C-\\><C-N><C-w>v", "Vertical Split" },
+    ["<leader>wj"] = { "<C-\\><C-N><C-w>s", "Horizontal Split" },
+    -- next tab
+    ["gt"] = { "<C-\\><C-N>gt", "Next tab", opts = { silent = true } },
+    ["gT"] = { "<C-\\><C-N>gT", "Prev tab", opts = { silent = true } },
+  },
 }
 
 return M
