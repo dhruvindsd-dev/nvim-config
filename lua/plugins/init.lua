@@ -22,9 +22,8 @@ local default_plugins = {
     init = function()
       require("core.utils").load_mappings "nvterm"
     end,
-    config = function(_, opts)
-      require "base46.term"
-      require("nvterm").setup(opts)
+    config = function()
+      require("nvterm").setup()
     end,
   },
 
@@ -46,7 +45,7 @@ local default_plugins = {
   {
     "nvim-tree/nvim-web-devicons",
     opts = function()
-      return { override = require("nvchad.icons.devicons")}
+      return { override = require "nvchad.icons.devicons" }
     end,
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "devicons")
