@@ -117,6 +117,9 @@ M.general = {
     ["<leader>F"] = { "<cmd>lua require('spectre').toggle()<CR>", opts = { silent = true } },
     ["zo"] = { "zO" },
     ["<leader>wt"] = { ":<C-U>set wrap!<cr>", "Toggle word wrap", opts = { silent = true } },
+    ["s"] = { ":<C-U>HopWord<cr>", "Hop word", opts = { silent = true } },
+    ["//"] = { ":<C-U>HopPattern<cr>", "Hop word", opts = { silent = true } },
+    ["<C-;>"] = { "<C-\\-n>", "Normal mode from terminal", opts = { silent = true } },
   },
   v = {
     ["<leader>sy"] = { '"+y', "Copy to system clipboard", { opts = { silent = true } } },

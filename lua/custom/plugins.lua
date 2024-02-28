@@ -82,14 +82,12 @@ local plugins = {
     end,
   },
   {
-    "ggandor/leap.nvim",
+    "smoka7/hop.nvim",
+    version = "*",
     lazy = false,
+    opts = {},
     config = function()
-      require("leap").add_default_mappings()
-      vim.keymap.set("n", "s", function()
-        local current_window = vim.fn.win_getid()
-        require("leap").leap { target_windows = { current_window } }
-      end)
+      require("hop").setup { keys = "wersdfagvhjkln" }
     end,
   },
   { "numtostr/BufOnly.nvim", lazy = false },
@@ -140,6 +138,7 @@ local plugins = {
       }
     end,
   },
+  { "diepm/vim-rest-console", lazy = false },
 }
 
 return plugins
