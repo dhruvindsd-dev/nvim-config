@@ -119,6 +119,7 @@ local plugins = {
     },
     config = function()
       require("noice").setup {
+        routes = { { view = "notify", filter = { event = "msg_showmode" } } },
         lsp = {
           -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
           override = {
@@ -139,6 +140,15 @@ local plugins = {
     end,
   },
   { "diepm/vim-rest-console", lazy = false },
+  {
+    "bloznelis/before.nvim",
+    config = function()
+      local before = require "before"
+      before.setup()
+      vim.keymap.set("n", "<M-b>", before.jump_to_last_edit, {})
+      vim.keymap.set("n", "<M-n>", before.jump_to_next_edit, {})
+    end,
+  },
 }
 
 return plugins

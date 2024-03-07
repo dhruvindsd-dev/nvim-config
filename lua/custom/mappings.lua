@@ -120,6 +120,8 @@ M.general = {
     ["s"] = { ":<C-U>HopWord<cr>", "Hop word", opts = { silent = true } },
     ["//"] = { ":<C-U>HopPattern<cr>", "Hop word", opts = { silent = true } },
     ["<C-;>"] = { "<C-\\-n>", "Normal mode from terminal", opts = { silent = true } },
+    ["ne"] = { ":<C-U> lua require('before').jump_to_last_edit()<cr>", "Jump to last edit", opts = { silent = true } },
+    ["be"] = { ":<C-U> lua require('before').jump_to_next_edit()<cr>", "Jump to last edit", opts = { silent = true } },
   },
   v = {
     ["<leader>sy"] = { '"+y', "Copy to system clipboard", { opts = { silent = true } } },
