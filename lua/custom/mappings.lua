@@ -33,8 +33,11 @@ M.general = {
 
     -- lse all buffers
     ["<leader>X"] = { ":bufdo bd<CR>", "Close all buffers", opts = { silent = true } },
-    ["<leader>bc"] = { ":BufOnly<cr>", "Close all buffers", opts = { noremap = true, silent = true } },
-    ["<leader>bf"] = { "<cmd> Telescope buffers <CR>", "Find buffers" },
+    ["<leader>bc"] = {
+      ":bufdo bd<CR>:<C-U> lua require('harpoon.ui').nav_file(1)<cr>'a",
+      "Close all buffers",
+      opts = { noremap = true, silent = true },
+    },
     ["<leader>bs"] = {
       "<cmd> tab split<CR>",
       "Open current buffer in new tab",
