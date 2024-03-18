@@ -33,7 +33,7 @@ M.general = {
 
     -- lse all buffers
     ["<leader>X"] = {
-      ":bufdo bd<CR>:<C-U> lua require('harpoon.ui').nav_file(1)<cr>'azz",
+      ":bufdo bd<CR>:<C-U> lua require('harpoon'):list():select(1)<cr>'azz",
       "Close all buffers",
       opts = { noremap = true, silent = true },
     },
@@ -83,26 +83,6 @@ M.general = {
     },
     ["<leader>sp"] = { '"+p', "Paste from system clipboard", opts = { silent = true } },
     -- harpoon
-    ["<leader>a"] = { ":<C-U> lua require('harpoon.mark').add_file()<cr>ma", "Add File", opts = { silent = true } },
-    ["H"] = {
-      ":<C-U> lua require('harpoon.ui').toggle_quick_menu()<cr>",
-      "Files View",
-      opts = { silent = true },
-    },
-    ["<leader>hn"] = {
-      ":<C-U> lua require('harpoon.ui').nav_next()<cr>",
-      "Next Mark",
-      opts = { silent = true },
-    },
-    ["<leader>hp"] = {
-      ":<C-U> lua require('harpoon.ui').nav_prev()<cr>",
-      "Prev Mark",
-      opts = { silent = true },
-    },
-    ["<C-a>"] = { ":<C-U> lua require('harpoon.ui').nav_file(1)<cr>'a", "1", opts = { silent = true } },
-    ["<C-s>"] = { ":<C-U> lua require('harpoon.ui').nav_file(2)<cr>'a", "2", opts = { silent = true } },
-    ["<C-d>"] = { ":<C-U> lua require('harpoon.ui').nav_file(3)<cr>'a", "3", opts = { silent = true } },
-    ["<C-f>"] = { ":<C-U> lua require('harpoon.ui').nav_file(4)<cr>'a", "4", opts = { silent = true } },
     ["<leader>QQ"] = { ":<C-U>quitall<cr>", "Quit", opts = { silent = true } },
     ["<C-m>"] = { ":<C-U>b#<cr>", "Last buffer", opts = { silent = true } },
     ["<leader>fc"] = { ":<C-U>Telescope lsp_incoming_calls<cr>", "Last buffer", opts = { silent = true } },
@@ -123,8 +103,7 @@ M.general = {
     ["s"] = { ":<C-U>HopWord<cr>", "Hop word", opts = { silent = true } },
     ["//"] = { ":<C-U>HopPattern<cr>", "Hop word", opts = { silent = true } },
     ["<C-;>"] = { "<C-\\-n>", "Normal mode from terminal", opts = { silent = true } },
-    ["ne"] = { ":<C-U> lua require('before').jump_to_last_edit()<cr>", "Jump to last edit", opts = { silent = true } },
-    ["be"] = { ":<C-U> lua require('before').jump_to_next_edit()<cr>", "Jump to last edit", opts = { silent = true } },
+    ["<leader>nm"] = { ":<C-U>Noice <CR>", "Noice messages in a split", opts = { silent = true } },
   },
   v = {
     ["<leader>sy"] = { '"+y', "Copy to system clipboard", { opts = { silent = true } } },

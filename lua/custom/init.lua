@@ -29,9 +29,11 @@ vim.cmd "nnoremap <A-Left> :vertical resize -3<CR>"
 vim.cmd "nnoremap <A-Right> :vertical resize +3<CR>"
 
 -- spell check
+vim.cmd "hi IlluminatedWordRead guibg=lightgreen guifg=black"
+
+vim.opt.cursorline = true
 
 vim.cmd "set spell"
--- vim.cmd "set spelloptions=camel"
 
 local function AttachToPythonDebugger()
   local dap = require "dap"

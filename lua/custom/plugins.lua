@@ -63,7 +63,6 @@ local plugins = {
       require "custom.configs.dapui"
     end,
   },
-  { "ThePrimeagen/harpoon", lazy = false },
   { "yssl/QFEnter", lazy = false },
   { "kevinhwang91/promise-async", lazy = false },
   {
@@ -141,12 +140,19 @@ local plugins = {
   },
   { "diepm/vim-rest-console", lazy = false },
   {
-    "bloznelis/before.nvim",
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    lazy = false,
     config = function()
-      local before = require "before"
-      before.setup()
-      vim.keymap.set("n", "<M-b>", before.jump_to_last_edit, {})
-      vim.keymap.set("n", "<M-n>", before.jump_to_next_edit, {})
+      require "custom.configs.harpoon2"
+    end,
+  },
+  {
+    "RRethy/vim-illuminate",
+    lazy = false,
+    config = function()
+      require "custom.configs.vim-illuminate"
     end,
   },
 }
