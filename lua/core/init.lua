@@ -93,7 +93,7 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     require("plenary.reload").reload_module("nvchad.statusline." .. config.ui.statusline.theme)
     vim.opt.statusline = "%!v:lua.require('nvchad.statusline." .. config.ui.statusline.theme .. "').run()"
 
-    -- require("base46").load_all_highlights()
+    require("base46").load_all_highlights()
     -- vim.cmd("redraw!")
   end,
 })
