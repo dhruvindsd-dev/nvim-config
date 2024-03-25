@@ -27,12 +27,6 @@ vim.cmd "nnoremap <A-Up> :resize +3<CR>"
 vim.cmd "nnoremap <A-Down> :resize -3<CR>"
 vim.cmd "nnoremap <A-Left> :vertical resize -3<CR>"
 vim.cmd "nnoremap <A-Right> :vertical resize +3<CR>"
-
--- spell check
-vim.cmd "hi IlluminatedWordRead guibg=lightgreen guifg=black"
-
-vim.opt.cursorline = true
-
 vim.cmd "set spell"
 
 local function AttachToPythonDebugger()

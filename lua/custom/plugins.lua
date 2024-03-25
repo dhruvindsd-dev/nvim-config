@@ -155,6 +155,7 @@ local plugins = {
       require "custom.configs.vim-illuminate"
     end,
   },
+  { "craftzdog/solarized-osaka.nvim", lazy = false, priority = 1000, opts = {} },
 }
 
 return plugins

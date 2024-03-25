@@ -104,6 +104,8 @@ M.general = {
     ["//"] = { ":<C-U>HopPattern<cr>", "Hop word", opts = { silent = true } },
     ["<C-;>"] = { "<C-\\-n>", "Normal mode from terminal", opts = { silent = true } },
     ["<leader>nm"] = { ":<C-U>Noice <CR>", "Noice messages in a split", opts = { silent = true } },
+    ["<leader>nn"] = { ":<C-U>NoiceDismiss<CR>", "Dismiss noise messages", opts = { silent = true } },
+    ["<leader>i"] = { ":<C-U>IlluminateToggle<CR>", "Toggle vim illuminate", opts = { silent = true } },
   },
   v = {
     ["<leader>sy"] = { '"+y', "Copy to system clipboard", { opts = { silent = true } } },
