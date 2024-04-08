@@ -258,6 +258,12 @@ M.telescope = {
   n = {
     ["<leader>."] = { "@q", "Play first recording" },
     ["r"] = { "<cmd> Telescope find_files theme=ivy<CR>", "Find files" },
+    ["<leader>fi"] = {
+      function()
+        require("telescope.builtin").find_files { find_command = { "rg", "--files", "--iglob", "!.git", "--hidden" } }
+      end,
+      "Find files",
+    },
     ["R"] = { "<cmd> Telescope buffers theme=ivy <CR>", "Find buffers" },
     ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
     ["<leader>ff"] = { "<cmd> Telescope grep_string<CR>", "Grep String" },

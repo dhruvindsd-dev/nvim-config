@@ -95,6 +95,7 @@ local plugins = {
   {
     "mg979/vim-visual-multi",
     lazy = false,
+    branch = "master",
     config = function()
       vim.cmd "VMTheme purplegray"
     end,
@@ -156,6 +157,30 @@ local plugins = {
     end,
   },
   { "craftzdog/solarized-osaka.nvim", lazy = false, priority = 1000, opts = {} },
+  {
+    "hedyhli/outline.nvim",
+    cmd = { "Outline", "OutlineOpen" },
+    lazy = false,
+    config = function()
+      require "custom.configs.outline"
+    end,
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  },
 }
 
 return plugins

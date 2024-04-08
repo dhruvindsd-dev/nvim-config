@@ -31,12 +31,13 @@ local options = {
       set_jumps = true, -- whether to set jumps in the jumplist
       goto_next_start = {
         ["}}"] = "@function.outer",
-        ["]]"] = "@conditional.outer",
+        ["]]"] = "@class.outer",
       },
       goto_previous_start = {
         ["{{"] = "@function.outer",
-        ["[["] = "@conditional.outer",
+        ["[["] = "@class.outer",
       },
+      pen 
     },
   },
   incremental_selection = {
