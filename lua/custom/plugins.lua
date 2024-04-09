@@ -2,13 +2,9 @@ local overrides = require "custom.configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
-
-  -- Override plugin definition options
-
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      -- format & linting
       {
         "jose-elias-alvarez/null-ls.nvim",
         config = function()
@@ -26,7 +22,6 @@ local plugins = {
   { "williamboman/mason.nvim", opts = overrides.mason },
   { "nvim-treesitter/nvim-treesitter", opts = overrides.treesitter },
   { "nvim-tree/nvim-tree.lua", opts = overrides.nvimtree },
-  --
   {
     "max397574/better-escape.nvim",
     event = "InsertEnter",
@@ -34,31 +29,18 @@ local plugins = {
       require("better_escape").setup()
     end,
   },
-
-  -- To make a plugin not be loaded
-  -- {
-  --   "NvChad/nvim-colorizer.lua",
-  --   enabled = false
-  -- },
-
-  -- All NvChad plugins are lazy-loaded by default
-  -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`
-  -- If you want a plugin to load on startup, add `lazy = false` to a plugin spec, for example
-  --
   { "christoomey/vim-tmux-navigator", lazy = false },
   { "github/copilot.vim", lazy = false },
   {
     "mfussenegger/nvim-dap",
-    lazy = false,
+    keys = { "<leader>du" },
     config = function()
       require "custom.configs.dap"
     end,
   },
   {
     "rcarriga/nvim-dap-ui",
-    keys = {
-      { "<leader>du", mode = "n" },
-    },
+    keys = { "<leader>du" },
     config = function()
       require "custom.configs.dapui"
     end,
@@ -72,56 +54,47 @@ local plugins = {
     end,
     event = "BufRead",
   },
-  { "mbbill/undotree", lazy = false },
+  { "mbbill/undotree", keys = { "<leader>ut" } },
   {
     "stevearc/oil.nvim",
-    lazy = false,
+    event = "BufRead",
+    keys = { "L" },
     config = function()
       require "custom.configs.oil"
     end,
   },
   {
     "smoka7/hop.nvim",
-    version = "*",
     lazy = false,
-    opts = {},
+    keys = { "s" },
     config = function()
       require("hop").setup { keys = "wersdfagvhjkln" }
     end,
   },
-  { "numtostr/BufOnly.nvim", lazy = false },
+  { "numtostr/BufOnly.nvim", event = "BufRead" },
   { "nvim-treesitter/nvim-treesitter-textobjects", lazy = false },
   { "xiyaowong/transparent.nvim", lazy = false },
   {
     "mg979/vim-visual-multi",
-    lazy = false,
+    event = "BufRead",
     branch = "master",
     config = function()
       vim.cmd "VMTheme purplegray"
+      vim.g.VM_maps["Find Under"] = "<leader>p"
     end,
   },
-  { "nvim-pack/nvim-spectre", lazy = false },
-  {
-    "stevearc/stickybuf.nvim",
-    lazy = false,
-    config = function()
-      require("stickybuf").setup()
-    end,
-  },
+  { "nvim-pack/nvim-spectre", keys = { "<leader>F" } },
   {
     "folke/noice.nvim",
     event = "VeryLazy",
-    opts = {
-      -- add any options here
-    },
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-    },
+    dependencies = { "MunifTanjim/nui.nvim" },
     config = function()
       require("noice").setup {
         routes = { { view = "notify", filter = { event = "msg_showmode" } } },
         lsp = {
           -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+          signature = { enabled = false },
+          hover = { enabled = false },
           override = {
             ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
             ["vim.lsp.util.stylize_markdown"] = true,
@@ -139,7 +112,7 @@ local plugins = {
       }
     end,
   },
-  { "diepm/vim-rest-console", lazy = false },
+  { "diepm/vim-rest-console", ft = "rest" },
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
@@ -151,7 +124,7 @@ local plugins = {
   },
   {
     "RRethy/vim-illuminate",
-    lazy = false,
+    event = "BufRead",
     config = function()
       require "custom.configs.vim-illuminate"
     end,
@@ -163,14 +136,6 @@ local plugins = {
     lazy = false,
     config = function()
       require "custom.configs.outline"
-    end,
-  },
-  {
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    ft = { "markdown" },
-    build = function()
-      vim.fn["mkdp#util#install"]()
     end,
   },
   {
