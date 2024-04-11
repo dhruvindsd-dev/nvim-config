@@ -103,7 +103,8 @@ M.general = {
     ["<leader>nn"] = { ":<C-U>NoiceDismiss<CR>", "Dismiss noise messages", opts = { silent = true } },
     ["<leader>i"] = { ":<C-U>IlluminateToggle<CR>", "Toggle vim illuminate", opts = { silent = true } },
     ["<leader>o"] = { ":<C-U>Outline<CR>", "Toggle outlines", opts = { silent = true } },
-    ["<leader>mp"] = { ":<C-U>MarkdownPreviewToggle<CR>", "Toggle outlines", opts = { silent = true } },
+    ["<leader>mp"] = { ":<C-U>MarkdownPreviewToggle<CR>", "Preview Markdown", opts = { silent = true } },
+    ["yl"] = { "v$\"+y", "Yank line", opts = { silent = true } },
   },
   v = {
     ["<leader>sy"] = { '"+y', "Copy to system clipboard", { opts = { silent = true } } },
