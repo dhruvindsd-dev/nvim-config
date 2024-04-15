@@ -146,6 +146,7 @@ local plugins = {
       vim.fn["mkdp#util#install"]()
     end,
   },
+  { "opdavies/toggle-checkbox.nvim", lazy = false },
 }
 
 return plugins
