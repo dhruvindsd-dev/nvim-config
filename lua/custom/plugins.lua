@@ -33,13 +33,16 @@ local plugins = {
   { "github/copilot.vim", lazy = false },
   {
     "mfussenegger/nvim-dap",
-    keys = { "<leader>du" },
+    lazy = false,
+    keys = { "<leader>du", "<leader>dr", "<leader>db" },
     config = function()
       require "custom.configs.dap"
     end,
   },
   {
     "rcarriga/nvim-dap-ui",
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+    lazy = false,
     keys = { "<leader>du" },
     config = function()
       require "custom.configs.dapui"
@@ -49,16 +52,16 @@ local plugins = {
   { "kevinhwang91/promise-async", lazy = false },
   {
     "kevinhwang91/nvim-ufo",
+    lazy = false,
     config = function()
       require "custom.configs.ufo-nvim"
     end,
-    event = "BufRead",
   },
-  { "mbbill/undotree", keys = { "<leader>ut" } },
+  { "mbbill/undotree", lazy = false },
   {
     "stevearc/oil.nvim",
-    event = "BufRead",
     keys = { "L" },
+    cmd = { "Oil" },
     config = function()
       require "custom.configs.oil"
     end,
@@ -68,7 +71,7 @@ local plugins = {
     lazy = false,
     keys = { "s" },
     config = function()
-      require("hop").setup { keys = "wersdfagvhjkln" }
+      require("hop").setup { keys = "asdfghjkl" }
     end,
   },
   { "numtostr/BufOnly.nvim", event = "BufRead" },
@@ -76,7 +79,7 @@ local plugins = {
   { "xiyaowong/transparent.nvim", lazy = false },
   {
     "mg979/vim-visual-multi",
-    event = "BufRead",
+    lazy = false,
     branch = "master",
     config = function()
       vim.cmd "VMTheme purplegray"
@@ -146,7 +149,34 @@ local plugins = {
       vim.fn["mkdp#util#install"]()
     end,
   },
-  { "opdavies/toggle-checkbox.nvim", lazy = false },
+  { "ixru/nvim-markdown", lazy = false },
+  { "folke/zen-mode.nvim", lazy = false },
+  {
+    "lukas-reineke/headlines.nvim",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    config = function()
+      require("headlines").setup {
+        markdown = {
+          fat_headline_lower_string = "▔",
+        },
+      }
+    end,
+  },
+  {
+    "shellRaining/hlchunk.nvim",
+    event = { "UIEnter" },
+    config = function()
+      require "custom.configs.hlchunk"
+    end,
+  },
+  {
+    "ziontee113/color-picker.nvim",
+    lazy = false,
+    config = function()
+      require 'custom.configs.color-picker'
+    end,
+  },
 }
 
 return plugins

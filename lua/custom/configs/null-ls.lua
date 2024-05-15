@@ -26,13 +26,13 @@ local sources = {
       "typescriptreact",
     },
   },
-
+  b.formatting.djlint.with { filetypes = { "xhtml", "htmldjango" } },
   -- Lua
   b.formatting.stylua,
 
   b.formatting.black.with { extra_args = { "--line-length", "120", "--fast" } },
   b.formatting.autoflake.with { extra_args = { "--remove-all-unused-imports" } },
-  
+
   -- the `prima cli` does not output in stdout. Creating a custom formatter for it
   h.make_builtin {
     name = "prismaFmt",

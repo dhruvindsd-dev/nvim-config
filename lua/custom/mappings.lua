@@ -104,11 +104,14 @@ M.general = {
     ["<leader>i"] = { ":<C-U>IlluminateToggle<CR>", "Toggle vim illuminate", opts = { silent = true } },
     ["<leader>o"] = { ":<C-U>Outline<CR>", "Toggle outlines", opts = { silent = true } },
     ["<leader>mp"] = { ":<C-U>MarkdownPreviewToggle<CR>", "Preview Markdown", opts = { silent = true } },
-    ["yl"] = { 'v$"+y', "Yank line", opts = { silent = true } },
+    ["yl"] = { '0v$"+y', "Yank line", opts = { silent = true } },
     ["<leader>c"] = { ":lua require('toggle-checkbox').toggle()<CR>", "Toggle checkbox", opts = { silent = true } },
     ["<leader>rr"] = { ":e!<CR>", "Reload file", opts = { silent = true } },
-    ["<leader>hn"] = { ":lua require('harpoon'):list():next()<Cr>" },
-    ["<leader>hb"] = { ":lua require('harpoon'):list():prev()<Cr>" },
+    ["<leader>tt"] = { ":terminal<Cr>", "New Terminal", opts = { silent = true } },
+    ["<leader>zm"] = { ":ZenMode<Cr>", "New Terminal", opts = { silent = true } },
+    ["C"] = { "<Plug>Markdown_Checkbox", "New Terminal", opts = { silent = true } },
+    ["<leader>c"] = { "<cmd>PickColor<cr>", "Color picker", opts = { silent = true } },
+    ["<leader>nf"] = { "<cmd>Oil<cr>", "Color picker", opts = { silent = true } },
   },
   v = {
     ["<leader>sy"] = { '"+y', "Copy to system clipboard", { opts = { silent = true } } },
@@ -128,6 +131,7 @@ M.general = {
     -- next tab
     ["gt"] = { "<C-\\><C-N>gt", "Next tab", opts = { silent = true } },
     ["gT"] = { "<C-\\><C-N>gT", "Prev tab", opts = { silent = true } },
+    ["<M-n>"] = { "<C-\\><C-N>", "Normal mode", opts = { silent = true } },
   },
 }
 

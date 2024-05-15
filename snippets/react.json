@@ -8,6 +8,19 @@
     "body": [
       "import React from 'react'",
       "",
+      "",
+      "const $TM_FILENAME_BASE = () => {",
+      "\t\treturn ($1);",
+      "}",
+      "export default ${TM_FILENAME_BASE}"
+    ],
+    "description": "Typescript React Function Component"
+  },
+  "Typescript React Props Function Component": {
+    "prefix": "rtpc",
+    "body": [
+      "import React from 'react'",
+      "",
       "interface Props {",
       "$1",
       "}",

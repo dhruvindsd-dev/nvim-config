@@ -47,6 +47,26 @@ vim.cmd [[
 
 ]]
 
+vim.api.nvim_set_keymap("n", "<leader>ze", "", {
+  noremap = true,
+  silent = true,
+  callback = function()
+    vim.fn.system "tmux set status off"
+    vim.cmd "ZenMode"
+    vim.cmd "set laststatus=0"
+  end,
+})
+
+vim.api.nvim_set_keymap("n", "<leader>zd", "", {
+  noremap = true,
+  silent = true,
+  callback = function()
+    vim.fn.system "tmux set status on"
+    vim.cmd "ZenMode"
+    vim.cmd "set laststatus=3"
+  end,
+})
+
 return {
   AttachToPythonDebugger = AttachToPythonDebugger,
 }
