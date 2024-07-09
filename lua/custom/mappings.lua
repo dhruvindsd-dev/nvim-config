@@ -29,7 +29,7 @@ M.general = {
     },
     ["<leader>we"] = { "<C-w>=", "resize splits " },
     -- maximise vertical and horizontal splits
-    ["<leader>wm"] = { "<C-w>|<C-w>_", "maximise vertical and horizontal splits" },
+    ["<leader>ww"] = { "<C-w>|<C-w>_", "maximise vertical and horizontal splits" },
 
     -- lse all buffers
     ["<leader>X"] = { ":bufdo bd<CR>", "Close all buffers", opts = { noremap = true, silent = true } },
@@ -54,11 +54,7 @@ M.general = {
     -- list marks
     ["mv"] = { ":<C-U>Telescope marks<cr>", "list marks", { opts = { silent = true } } },
 
-    ["t"] = {
-      ":<C-U>Telescope lsp_document_symbols theme=cursor previewer=false<cr>",
-      "document symbols",
-      { opts = { silent = true } },
-    },
+    ["t"] = { ":<C-U>Telescope lsp_document_symbols theme=cursor previewer=false<cr>", "document symbols", { opts = { silent = true } }, },
     ["T"] = {
       function()
         local otps = {
@@ -97,6 +93,7 @@ M.general = {
     ["zo"] = { "zO" },
     ["<leader>wt"] = { ":<C-U>set wrap!<cr>", "Toggle word wrap", opts = { silent = true } },
     ["s"] = { ":<C-U>HopWord<cr>", "Hop word", opts = { silent = true } },
+    ["S"] = { ":<C-U>HopNodes<cr>", "Hop word", opts = { silent = true } },
     ["//"] = { ":<C-U>HopPattern<cr>", "Hop word", opts = { silent = true } },
     ["<C-;>"] = { "<C-\\-n>", "Normal mode from terminal", opts = { silent = true } },
     ["<leader>nm"] = { ":<C-U>Noice <CR>", "Noice messages in a split", opts = { silent = true } },
@@ -105,13 +102,13 @@ M.general = {
     ["<leader>o"] = { ":<C-U>Outline<CR>", "Toggle outlines", opts = { silent = true } },
     ["<leader>mp"] = { ":<C-U>MarkdownPreviewToggle<CR>", "Preview Markdown", opts = { silent = true } },
     ["yl"] = { '0v$"+y', "Yank line", opts = { silent = true } },
-    ["<leader>c"] = { ":lua require('toggle-checkbox').toggle()<CR>", "Toggle checkbox", opts = { silent = true } },
     ["<leader>rr"] = { ":e!<CR>", "Reload file", opts = { silent = true } },
     ["<leader>tt"] = { ":terminal<Cr>", "New Terminal", opts = { silent = true } },
     ["<leader>zm"] = { ":ZenMode<Cr>", "New Terminal", opts = { silent = true } },
     ["C"] = { "<Plug>Markdown_Checkbox", "New Terminal", opts = { silent = true } },
     ["<leader>c"] = { "<cmd>PickColor<cr>", "Color picker", opts = { silent = true } },
     ["<leader>nf"] = { "<cmd>Oil<cr>", "Color picker", opts = { silent = true } },
+    ["<leader>cs"] = { "viwgU", "Capitalize String", opts = { silent = true } },
   },
   v = {
     ["<leader>sy"] = { '"+y', "Copy to system clipboard", { opts = { silent = true } } },

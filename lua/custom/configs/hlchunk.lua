@@ -1,18 +1,18 @@
 require("hlchunk").setup {
   chunk = {
     chars = {
-      horizontal_line = "━",
-      vertical_line = "┃",
+      -- horizontal_line = "━",
+      -- vertical_line = "┃",
       -- left_top = "┏",
       -- left_bottom = "┗",
-      right_arrow = "▶",
+      right_arrow = ">",
 
-      -- horizontal_line = "─",
-      -- vertical_line = "│",
+      horizontal_line = "─",
+      vertical_line = "│",
       left_top = "╭",
       left_bottom = "╰",
     },
-    style = "#00C7C7",
+    style = "#00F0F0",
   },
   line_num = { enable = false },
   indent = {

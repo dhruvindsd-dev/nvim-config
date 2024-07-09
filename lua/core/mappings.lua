@@ -9,11 +9,7 @@ M.general = {
     ["<C-e>"] = { "<End>", "End of line" },
 
     -- navigate within insert mode
-    ["<C-h>"] = { "<Left>", "Move left" },
-    ["<C-l>"] = { "<Right>", "Move right" },
-    ["<C-k>"] = { "<Up>", "Move up" },
-    ["<C-j>"] = { "<Down>", "Move Down" },
-    ["<A-l>"] = {
+    ["<C-l>"] = {
       function()
         local copilot_keys = vim.fn["copilot#Accept"]()
         if copilot_keys ~= "" then
@@ -130,9 +126,8 @@ M.lspconfig = {
 
   n = {
     ["gD"] = {
-      function()
-        vim.lsp.buf.declaration()
-      end,
+      "<cmd>tab split | lua vim.lsp.buf.definition()<CR>",
+
       "LSP declaration",
     },
 
@@ -264,11 +259,11 @@ M.telescope = {
       end,
       "Find files",
     },
-    ["R"] = { "<cmd> Telescope buffers theme=ivy <CR>", "Find buffers" },
+    [";"] = { "<cmd> Telescope current_buffer_fuzzy_find theme=cursor previewer=false<CR>", "Find in current buffer" },
     ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
     ["<leader>ff"] = { "<cmd> Telescope grep_string<CR>", "Grep String" },
     ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
-    ["<leader>fb"] = { "<cmd> Telescope current_buffer_fuzzy_find theme=ivy <CR>", "Find in current buffer" },
+    ["<leader>fb"] = { "<cmd> Telescope buffers theme=ivy <CR>", "Find buffers" },
     ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "Help page" },
     ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
     ["<leader>fg"] = {

@@ -1,5 +1,7 @@
 require("oil").setup {
   skip_confirm_for_simple_edits = true,
+  delete_to_trash = true,
+
   -- Keymaps in oil buffer. Can be any value that `vim.keymap.set` accepts OR a table of keymap
   -- options with a `callback` (e.g. { callback = function() ... end, desc = "", nowait = true })
   -- Additionally, if it is a string that matches "actions.<name>",
@@ -17,9 +19,11 @@ require("oil").setup {
   -- Set to false to disable all of the above keymaps
   use_default_keymaps = true,
   view_options = {
+    show_hidden = true,
     is_hidden_file = function(name, bufnr)
       --  maybe add migrations (django) folder here
-      return vim.startswith(name, ".")
+      -- return vim.startswith(name, ".")
+      return name == ".." or name == ".git"
     end,
   },
   -- Configuration for the floating window in oil.open_float

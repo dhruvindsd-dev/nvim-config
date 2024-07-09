@@ -69,9 +69,9 @@ local plugins = {
   {
     "smoka7/hop.nvim",
     lazy = false,
-    keys = { "s" },
+    keys = { "s", "S", "//" },
     config = function()
-      require("hop").setup { keys = "asdfghjkl" }
+      require("hop").setup { keys = "asdfghjlqwertyuiozxcvbnm" }
     end,
   },
   { "numtostr/BufOnly.nvim", event = "BufRead" },
@@ -174,7 +174,18 @@ local plugins = {
     "ziontee113/color-picker.nvim",
     lazy = false,
     config = function()
-      require 'custom.configs.color-picker'
+      require "custom.configs.color-picker"
+    end,
+  },
+  {
+    "mistricky/codesnap.nvim",
+    keys = {
+      { "<leader>sc", "<cmd>CodeSnap<cr>", mode = "x", desc = "Save selected code snapshot into clipboard" },
+      { "<leader>sch", "<cmd>CodeSnapHighlight<cr>", mode = "x", desc = "Save selected code snapshot into clipboard" },
+    },
+    build = "make",
+    config = function()
+      require "custom.configs.codesnap"
     end,
   },
 }
