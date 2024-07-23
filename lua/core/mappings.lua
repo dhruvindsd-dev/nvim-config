@@ -259,7 +259,7 @@ M.telescope = {
       end,
       "Find files",
     },
-    [";"] = { "<cmd> Telescope current_buffer_fuzzy_find theme=cursor previewer=false<CR>", "Find in current buffer" },
+    ["R"] = { "<cmd> Telescope current_buffer_fuzzy_find theme=cursor previewer=false<CR>", "Find in current buffer" },
     ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "Find all" },
     ["<leader>ff"] = { "<cmd> Telescope grep_string<CR>", "Grep String" },
     ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },

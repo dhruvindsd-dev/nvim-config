@@ -1,3 +1,8 @@
+local utils = require "custom.utils"
+
+-- Assuming the green color is in the 'String' highlight group
+local green_color = utils.get_hex_color("Keyword", "fg")
+
 require("hlchunk").setup {
   chunk = {
     chars = {
@@ -5,14 +10,16 @@ require("hlchunk").setup {
       -- vertical_line = "┃",
       -- left_top = "┏",
       -- left_bottom = "┗",
-      right_arrow = ">",
+      -- right_arrow = "▶",
 
       horizontal_line = "─",
       vertical_line = "│",
       left_top = "╭",
       left_bottom = "╰",
+      -- right_arrow = ">",
+      right_arrow = "➤",
     },
-    style = "#00F0F0",
+    style = green_color,
   },
   line_num = { enable = false },
   indent = {
