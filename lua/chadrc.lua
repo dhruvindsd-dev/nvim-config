@@ -5,12 +5,13 @@
 local M = {}
 
 M.base46 = {
-	theme = "onedark",
+	theme = "gruvbox_light",
 
 	-- hl_override = {
 	-- 	Comment = { italic = true },
 	-- 	["@comment"] = { italic = true },
 	-- },
+  
 }
 
 return M
