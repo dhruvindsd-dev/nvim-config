@@ -1,6 +1,8 @@
-local utils = require "plugins.custom.utils"
-
 return {
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    enabled = false,
+  },
   {
     "nvim-telescope/telescope.nvim",
     opts = {
@@ -82,7 +84,13 @@ return {
   },
 
   {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    -- commit = "786ca8680ecbed11f3f6a157ea411e7ad2ee4d34",
+    lazy = false,
+  },
+  {
     "nvim-treesitter/nvim-treesitter",
+    -- commit = "f197a15",
     opts = {
       ensure_installed = {
         "lua",
@@ -101,12 +109,7 @@ return {
         "graphql",
         "python",
       },
-
-      highlight = {
-        enable = true,
-        use_languagetree = true,
-      },
-
+      highlight = { enable = true, use_languagetree = true },
       indent = { enable = true },
       textobjects = {
         select = {
@@ -151,7 +154,6 @@ return {
       },
     },
   },
-  { "nvim-treesitter/nvim-treesitter-textobjects", lazy = false },
   { "christoomey/vim-tmux-navigator", lazy = false },
   { "github/copilot.vim", lazy = false },
   { "yssl/QFEnter", lazy = false },
@@ -188,8 +190,6 @@ return {
     config = function()
       vim.cmd "VMTheme purplegray"
       vim.g.VM_maps["Find Under"] = "<C-d>" -- replace C-n
-
-
     end,
   },
   { "nvim-pack/nvim-spectre", keys = { "<leader>F" } },
@@ -266,17 +266,20 @@ return {
   { "xiyaowong/transparent.nvim", lazy = false },
   {
     "razak17/tailwind-fold.nvim",
-    opts = {},
     dependencies = { "nvim-treesitter/nvim-treesitter" },
-    ft = { "html", "svelte", "astro", "vue", "typescriptreact", "php", "blade" },
+    ft = { "html", "svelte", "astro", "vue", "typescriptreact", "blade", "javascriptreact" },
+    opts = {
+      enabled = false,
+      symbol = "•",
+      highlight = { fg = "Grey" },
+      ft = { "html", "svelte", "astro", "vue", "tsx", "php", "blade", "eruby" },
+    },
+  },
+  {
+    "brenoprata10/nvim-highlight-colors",
+    lazy = false,
     config = function()
-      local green = utils.get_hex_color("NvimString", "fg")
-      require("tailwind-fold").setup {
-        enabled = false,
-        symbol = "",
-        highlight = { fg = green },
-        ft = { "html", "svelte", "astro", "vue", "tsx", "php", "blade", "eruby" },
-      }
+      require("nvim-highlight-colors").setup {}
     end,
   },
 }

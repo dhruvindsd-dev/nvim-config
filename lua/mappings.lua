@@ -9,6 +9,8 @@ nomap("n", "<C-s>")
 nomap("n", "<leader>e")
 nomap("n", "<leader>h")
 nomap("n", "<leader>v")
+nomap("n", "<M-h>")
+nomap("n", "<M-v>")
 
 -- add yours here
 
@@ -93,20 +95,6 @@ map("n", "<leader>or", "<cmd>ObsidianBacklinks<cr>", { silent = true })
 map("n", "<leader>ol", "<cmd>ObsidianLinks<cr>", { silent = true })
 map("n", "<leader>tw", "<cmd>TailwindFoldToggle<cr>", { silent = true })
 
--- map("n", "<leader><leader>", function()
---   local params = {
---     command = "_typescript.organizeImports",
---     arguments = { vim.api.nvim_buf_get_name(0) },
---     title = "",
---   }
---   vim.lsp.buf.format { async = false }
---   vim.lsp.buf.execute_command(params)
---
---   if vim.bo.filetype == "prisma" then
---     vim.cmd ":e!"
---   end
--- end)
-
 map("n", "T", function()
   local otps = {
     symbols = { "class", "method", "function" },
@@ -144,6 +132,11 @@ map("n", "<leader>pt", "<cmd> Telescope terms <CR>", { silent = true })
 map("n", "<leader>ma", "<cmd> Telescope marks <CR>", { silent = true })
 map("n", "<leader>fd", "<cmd> Telescope diagnostics bufnr=0<CR>", { silent = true })
 map("n", "<leader>fD", "<cmd> Telescope diagnostics<CR>", { silent = true })
+
+map("n", "<A-Up>", ":resize +3<CR>", { silent = true })
+map("n", "<A-Down>", ":resize -3<CR>", { silent = true })
+map("n", "<A-Left>", ":vertical resize -3<CR>", { silent = true })
+map("n", "<A-Right>", ":vertical resize +3<CR>", { silent = true })
 
 -- harpoon
 local harpoon = require "harpoon"
@@ -315,10 +308,6 @@ map("n", "<leader>gd", function()
   require("gitsigns").toggle_deleted()
 end, { silent = true })
 
-map("n", "<C-i>", function()
-  require("nvchad.tabufline").move_buf(1)
-end, { silent = true })
-
 map("n", "<C-u>", function()
   require("nvchad.tabufline").move_buf(-1)
 end, { silent = true })
@@ -328,3 +317,27 @@ for i = 1, 9, 1 do
     vim.api.nvim_set_current_buf(vim.t.bufs[i])
   end, { silent = true })
 end
+
+map("n", "<leader><leader>", function()
+  require("conform").format { async = true }
+end, { silent = true })
+
+map("n", "<leader>ze", "", {
+  noremap = true,
+  silent = true,
+  callback = function()
+    vim.fn.system "tmux set status off"
+    vim.cmd "ZenMode"
+    vim.cmd "set laststatus=0"
+  end,
+})
+
+map("n", "<leader>zd", "", {
+  noremap = true,
+  silent = true,
+  callback = function()
+    vim.fn.system "tmux set status on"
+    vim.cmd "ZenMode"
+    vim.cmd "set laststatus=3"
+  end,
+})
