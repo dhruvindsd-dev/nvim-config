@@ -1,4 +1,6 @@
 require "nvchad.mappings"
+local autocmd = vim.api.nvim_create_autocmd
+
 local nomap = vim.keymap.del
 
 nomap("n", "<C-l>")
@@ -16,8 +18,14 @@ nomap("n", "<M-v>")
 
 local map = vim.keymap.set
 
+map("n", "<leader>sftj", ":set ft=javascriptreact <cr>", { silent = true })
+map("n", "<leader>wl", "<C-w>v", { silent = true })
+map("n", "<leader>wj", "<C-w>s", { silent = true })
+map("n", "<leader>wc", "<C-w>o", { silent = true })
+
 map("n", "r", "<cmd> Telescope find_files theme=ivy<CR>", { silent = true })
-map("n", "R", "<cmd> Telescope current_buffer_fuzzy_find theme=cursor previewer=false<CR>")
+map("n", "R", "<cmd> Telescope buffers theme=ivy <CR>")
+
 map("i", "jk", "<ESC>", { silent = true })
 map("n", "<leader>e", "<cmd> NvimTreeToggle<CR>", { silent = true })
 
@@ -52,17 +60,13 @@ map("n", "'r", "'Rzz", { silent = true })
 map("n", "mv", ":<C-U>Telescope marks<cr>", { silent = true })
 
 map("n", "t", ":<C-U>Telescope lsp_document_symbols theme=cursor previewer=false<cr>", { silent = true })
-map("n", "<leader>sp", "+p', ", { silent = true })
+map("n", "<leader>sp", '"+p', { silent = true })
+
 -- harpoon
 map("n", "<leader>QQ", ":<C-U>quitall<cr>", { silent = true })
 map("n", "<C-m>", ":<C-U>b#<cr>", { silent = true })
 map("n", "<leader>fc", ":<C-U>Telescope lsp_incoming_calls<cr>", { silent = true })
 map("n", "<leader>ut", ":<C-U>UndotreeToggle<cr>", { silent = true })
-
-map("n", "<leader>wl", "<C-w>v", { silent = true })
-map("n", "<leader>wj", "<C-w>s", { silent = true })
-map("n", "<leader>wc", "<C-w>o", { silent = true })
-map("n", "gi", "gi<Esc>zzi", { silent = true })
 
 map("n", "<leader>mc", "<Plug>(VM-Find-Under, {silent=true})")
 map("n", "<M-C-j>", "<Plug>(VM-Select-Cursor-Down, {silent=true})")
@@ -83,11 +87,13 @@ map("n", "<leader>o", ":<C-U>Outline<CR>", { silent = true })
 map("n", "<leader>mp", ":<C-U>MarkdownPreviewToggle<CR>", { silent = true })
 map("n", "yl", "] = { '0v$", { silent = true })
 map("n", "<leader>rr", ":e!<CR>", { silent = true })
-map("n", "<leader>tt", ":terminal<Cr>", { silent = true })
+map("n", "<leader>nt", ":terminal<Cr>", { silent = true })
 map("n", "<leader>zm", ":ZenMode<Cr>", { silent = true })
 map("n", "C", "<Plug>Markdown_Checkbox", { silent = true })
 map("n", "<leader>nf", "<cmd>Oil<cr>", { silent = true })
 map("n", "<leader>cs", "viwgU", { silent = true })
+
+map("n", "<leader>tt", ":TransparentToggle<Cr>", { silent = true })
 
 -- obsidian
 map("n", "<leader>oo", "<cmd>ObsidianOpen<cr>", { silent = true })
@@ -115,10 +121,6 @@ map("n", "<C-k>", ":<C-U>TmuxNavigateUp<cr>", { silent = true })
 map("n", "<leader>s", ":<C-U>w<CR>", { silent = true })
 map("n", "<leader>S", ":<C-U>wa<CR>", { silent = true })
 
-map("n", "gD", "<cmd>tab split | lua vim.lsp.buf.definition(, {silent=true})<CR>")
-
-map("n", "gr", ":<C-U>Telescope lsp_references <cr>", { silent = true })
-
 map("n", "<leader>.", "@q", { silent = true })
 map("n", "<leader>ff", "<cmd> Telescope grep_string<CR>", { silent = true })
 map("n", "<leader>fw", "<cmd> Telescope live_grep <CR>", { silent = true })
@@ -137,6 +139,36 @@ map("n", "<A-Up>", ":resize +3<CR>", { silent = true })
 map("n", "<A-Down>", ":resize -3<CR>", { silent = true })
 map("n", "<A-Left>", ":vertical resize -3<CR>", { silent = true })
 map("n", "<A-Right>", ":vertical resize +3<CR>", { silent = true })
+map("n", "<leader>tc", ":HighlightColors toggle<CR>", { silent = true })
+
+map({ "n", "t" }, "<A-l>", function()
+  require("nvchad.term").toggle {
+    pos = "float",
+    id = "side-pane",
+    size = 0.4,
+    float_opts = {
+      row = 0,
+      col = 1,
+      width = 0.5,
+      height = 1,
+      border = "single",
+    },
+  }
+end)
+-- map({ "n", "t" }, "<A-j>", function()
+--   require("nvchad.term").toggle {
+--     pos = "float",
+--     id = "bottom-pane",
+--     size = 0.4,
+--     float_opts = {
+--       row = 1,
+--       col = 0,
+--       width = 1,
+--       height = 0.4,
+--       border = "single",
+--     },
+--   }
+-- end)
 
 -- harpoon
 local harpoon = require "harpoon"
@@ -216,10 +248,19 @@ map("t", "<C-k>", "<C-\\><C-N>:<C-U>TmuxNavigateUp<cr>", { silent = true })
 map("t", "<leader>wl", "<C-\\><C-N><C-w>v", { silent = true })
 map("t", "<leader>wj", "<C-\\><C-N><C-w>s", { silent = true })
 -- next tab
-
 map("t", "gt", "<C-\\><C-N>gt", { silent = true })
 map("t", "gT", "<C-\\><C-N>gT", { silent = true })
 map("t", "<M-n>", "<C-\\><C-N>", { silent = true })
+-- go to tab 1
+map("n", "1", "<C-\\><C-N>:tabfirst<cr>", { silent = true })
+map("n", "2", "<C-\\><C-N>:tabnext 2<cr>", { silent = true })
+map("n", "3", "<C-\\><C-N>:tabnext 3<cr>", { silent = true })
+map("n", "4", "<C-\\><C-N>:tabnext 4<cr>", { silent = true })
+
+map("t", "1", "<C-\\><C-N>:tabfirst<cr>", { silent = true })
+map("t", "2", "<C-\\><C-N>:tabnext 2<cr>", { silent = true })
+map("t", "3", "<C-\\><C-N>:tabnext 3<cr>", { silent = true })
+map("t", "4", "<C-\\><C-N>:tabnext 4<cr>", { silent = true })
 
 map("n", "gh", function()
   vim.lsp.buf.hover()
@@ -231,14 +272,6 @@ end, { silent = true })
 
 map("n", "<leader>td", function()
   vim.lsp.buf.type_definition()
-end, { silent = true })
-
-map("n", "gd", function()
-  vim.lsp.buf.definition()
-end, { silent = true })
-
-map("n", "gR", function()
-  vim.lsp.buf.references()
 end, { silent = true })
 
 map("n", "<leader>f", function()
@@ -308,6 +341,10 @@ map("n", "<leader>gd", function()
   require("gitsigns").toggle_deleted()
 end, { silent = true })
 
+map("n", "<leader>glb", function()
+  require("gitsigns").toggle_current_line_blame()
+end, { silent = true })
+
 map("n", "<C-u>", function()
   require("nvchad.tabufline").move_buf(-1)
 end, { silent = true })
@@ -319,7 +356,11 @@ for i = 1, 9, 1 do
 end
 
 map("n", "<leader><leader>", function()
-  require("conform").format { async = true }
+  require("conform").format { async = false }
+  if vim.bo.filetype == "typescript" or vim.bo.filetype == "typescriptreact" then
+    vim.lsp.buf.code_action { apply = true, context = { only = { "source.removeUnusedImports.ts" }, diagnostics = {} } }
+  end
+  -- quit nvim
 end, { silent = true })
 
 map("n", "<leader>ze", "", {
@@ -340,4 +381,18 @@ map("n", "<leader>zd", "", {
     vim.cmd "ZenMode"
     vim.cmd "set laststatus=3"
   end,
+})
+
+map("n", "<leader>ti", function()
+  vim.lsp.buf.code_action {
+    apply = true,
+    context = {
+      only = { "source.addMissingImports.ts" },
+      diagnostics = {},
+    },
+  }
+end, {
+  desc = "Add missing imports",
+  noremap = true,
+  silent = true,
 })

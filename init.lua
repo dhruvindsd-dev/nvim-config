@@ -35,3 +35,34 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+
+require("luasnip.loaders.from_vscode").lazy_load { paths = { "./snippets" } }
+
+vim.cmd "hi HopNextKey guifg=Red gui=bold cterm=bold"
+vim.cmd "hi HopNextKey1 guibg=Gray40  guifg=Gray90 gui=bold cterm=bold"
+vim.cmd "hi HopNextKey2 guibg=Gray40   guifg=Gray90 gui=bold cterm=bold"
+
+if vim.g.neovide then
+  vim.o.termguicolors = true
+  -- vim.o.guifont = "FiraCode NF:h16:b"
+  vim.o.linespace = 2
+
+  vim.g.neovide_hide_mouse_when_typing = true
+
+  vim.g.neovide_remember_window_size = true
+
+  vim.g.neovide_input_use_logo = true
+  vim.g.neovide_input_macos_option_key_is_meta = "both"
+
+  vim.g.neovide_transparency = 0.94
+  vim.g.neovide_window_blurred = true
+
+  -- disable noice
+end
+
+vim.filetype.add { extension = { mdx = "markdown" } }
+vim.treesitter.language.register("markdown", "mdx")
+
+--  disable numbers 
+
+vim.cmd "set nonumber"

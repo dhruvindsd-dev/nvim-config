@@ -85,12 +85,12 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
-    -- commit = "786ca8680ecbed11f3f6a157ea411e7ad2ee4d34",
+    commit = "95933e762e28f9d38b572d65e7e4da9d2f4d90cb",
     lazy = false,
   },
   {
     "nvim-treesitter/nvim-treesitter",
-    -- commit = "f197a15",
+    commit = "62b0bb4f24ad09f535efe44cc9d088f90dcd2498",
     opts = {
       ensure_installed = {
         "lua",
@@ -179,7 +179,7 @@ return {
     lazy = false,
     keys = { "s", "S", "//" },
     config = function()
-      require("hop").setup { keys = "asdfghjlqwertyuiozxcvbnm" }
+      require("hop").setup { keys = "asdfghjkl;'qwertio" }
     end,
   },
   { "numtostr/BufOnly.nvim", event = "BufRead" },
@@ -192,7 +192,13 @@ return {
       vim.g.VM_maps["Find Under"] = "<C-d>" -- replace C-n
     end,
   },
-  { "nvim-pack/nvim-spectre", keys = { "<leader>F" } },
+  {
+    "nvim-pack/nvim-spectre",
+    keys = { "<leader>F" },
+    config = function()
+      require "plugins.custom.spectre"
+    end,
+  },
   {
     "folke/noice.nvim",
     event = "VeryLazy",
@@ -270,16 +276,156 @@ return {
     ft = { "html", "svelte", "astro", "vue", "typescriptreact", "blade", "javascriptreact" },
     opts = {
       enabled = false,
-      symbol = "•",
+      symbol = "✦",
       highlight = { fg = "Grey" },
       ft = { "html", "svelte", "astro", "vue", "tsx", "php", "blade", "eruby" },
     },
   },
   {
-    "brenoprata10/nvim-highlight-colors",
-    lazy = false,
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown" },
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
     config = function()
-      require("nvim-highlight-colors").setup {}
+      require "plugins.custom.render-markdown"
+
+      vim.api.nvim_set_keymap("n", "<leader>rm", ":RenderMarkdown toggle<CR>", { noremap = true, silent = true })
     end,
+  },
+
+  { "nvchad/volt", lazy = true },
+  { "nvchad/minty", cmd = { "Shades", "Huefy" } },
+  {
+    "dmmulroy/tsc.nvim",
+    cmd = { "TSC" },
+    config = function()
+      require("tsc").setup()
+    end,
+  },
+  {
+    "rmagatti/auto-session",
+    lazy = false,
+
+    ---enables autocomplete for opts
+    ---@module "auto-session"
+    ---@type AutoSession.Config
+    opts = {
+      suppressed_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+    },
+  },
+
+  {
+    "folke/snacks.nvim",
+    opts = {
+      dashboard = {
+        -- your dashboard configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      },
+    },
+  },
+
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+      bigfile = { enabled = false },
+      indent = { enabled = false },
+      input = { enabled = false },
+      notifier = { enabled = false },
+      quickfile = { enabled = false },
+      scroll = { enabled = false },
+      statuscolumn = { enabled = false },
+      words = { enabled = false },
+      dashboard = {
+        enabled = true,
+        sections = {
+          {
+            section = "terminal",
+            cmd = "ascii-image-converter ~/.config/nvim/logo.png -b --dither -W 45",
+            -- cmd = "ascii-image-converter ~/.config/nvim/primary2.png -b",
+            padding = 1,
+            gap = 1,
+            height = 17,
+            align = "center",
+            indent = 6,
+          },
+          {
+            align = "center",
+            icon = " ",
+            title = "Git Status",
+            section = "terminal",
+            enabled = function()
+              return Snacks.git.get_root() ~= nil
+            end,
+            cmd = "hub status --short --branch --renames",
+            height = 5,
+            padding = 1,
+            ttl = 5 * 60,
+            indent = 3,
+          },
+          { {
+
+            align = "center",
+            section = "startup",
+          } },
+        },
+      },
+    },
+  },
+
+  {
+    "tpope/vim-fugitive",
+    lazy = true,
+    priority = 1001,
+    cmd = { "G", "Git" },
+    keys = { "<leader>gB" },
+    config = function()
+      vim.api.nvim_set_keymap("n", "<leader>gB", ":Git blame<CR>", { noremap = true, silent = true })
+    end,
+  },
+
+  {
+    "davidmh/mdx.nvim",
+    config = true,
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    lazy = false,
+  },
+  {
+    "mikavilpas/yazi.nvim",
+    event = "VeryLazy",
+    dependencies = { "folke/snacks.nvim", lazy = true },
+    keys = {
+      -- 👇 in this section, choose your own keymappings!
+      {
+        "<leader>-",
+        mode = { "n", "v" },
+        "<cmd>Yazi<cr>",
+        desc = "Open yazi at the current file",
+      },
+      {
+        -- Open in the current working directory
+        "<leader>cw",
+        "<cmd>Yazi cwd<cr>",
+        desc = "Open the file manager in nvim's working directory",
+      },
+      {
+        "<c-up>",
+        "<cmd>Yazi toggle<cr>",
+        desc = "Resume the last yazi session",
+      },
+    },
+    ---@type YaziConfig | {}
+    opts = {
+      -- if you want to open yazi instead of netrw, see below for more info
+      open_for_directories = false,
+      keymaps = {
+        show_help = "<f1>",
+        cycle_open_buffers = "<tab>",
+      },
+    },
   },
 }
